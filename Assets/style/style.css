@@ -5,14 +5,18 @@
 }
 
 body{
+  display: flex;
   font-family: 'Righteous', cursive;
+  justify-content: center;
+  align-items: center;
+  height:100vh;
+  background-color: thistle;
 }
 
 .card{
   position: relative;
   width: 150px;
   height: 150px;
-
   transform-style: preserve-3d;
   transition: transform .5s;
 }
@@ -66,4 +70,11 @@ body{
   border: none;
   border-radius: 10px;
   cursor: pointer;
+}
+
+#boardCard{
+  max-width: 700px;
+  display: grid;
+  grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr;
+  gap: 20px;
 }
