@@ -43,5 +43,29 @@ function createCardFace(face, card, cardElement) {
 
 
 function flipCard() {
-  this.classList.add("flip")
+
+  if (game.setCard(this.id)) {
+
+    this.classList.add("flip");
+
+    if (game.firstCard != null && game.secondCard != null) {
+      if (game.checkMath()) {
+
+        game.clearCards();
+
+      } else {
+
+        setTimeout(function removFlip(card) {
+          let firstCardView = document.getElementById(game.firstCard.id);
+          let secondtCardView = document.getElementById(game.secondCard.id);
+          firstCardView.classList.remove('flip');
+          secondtCardView.classList.remove('flip');
+
+          game.clearCards();
+        }, 1000);
+
+      }
+    }
+
+  }
 }

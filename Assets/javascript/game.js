@@ -1,4 +1,37 @@
 let game = {
+
+  lockMode: false,
+  firstCard: null,
+  secondCard: null,
+
+  setCard: function (id) {
+    let cardFlipped = this.cards.filter(card => card.id === id)[0];
+
+    if (cardFlipped.flipCard || this.lockMode) {
+      return false;
+    }
+
+    if (!this.firstCard) {
+      this.firstCard = cardFlipped;
+      return true;
+    } else {
+      this.secondCard = cardFlipped;
+      this.lockMode = true;
+      return true;
+    }
+
+  },
+
+  checkMath: function () {
+    return this.firstCard.icon === this.secondCard.icon;
+  },
+
+  clearCards: function () {
+    this.firstCard = null;
+    this.secondCard = null;
+    this.lockMode = false;
+  },
+
   techs: [
     "bootstrap",
     "css",
