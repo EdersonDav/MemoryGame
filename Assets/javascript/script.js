@@ -11,6 +11,7 @@ function startGame() {
 
 function initializeCards(cards) {
   let gameBoard = document.getElementById("boardCard")
+  gameBoard.innerHTML = '';
   cards.forEach((card) => {
     let cardElement = document.createElement("div")
     cardElement.id = card.id
@@ -43,17 +44,18 @@ function createCardFace(face, card, cardElement) {
 
 
 function flipCard() {
-
-
-
   if (game.setCard(this.id)) {
 
     this.classList.add("flip");
 
     if (game.secondCard) {
-      if (game.checkMath()) {
-
+      if (game.checkMatch()) {
         game.clearCards();
+
+        if (game.gameOver()) {
+          let gameOver = document.getElementById("gameOver");
+          gameOver.style.display = 'flex';
+        }
 
       } else {
 
@@ -69,5 +71,11 @@ function flipCard() {
     }
 
   }
+}
 
+function restart() {
+  startGame();
+  game.clearCards();
+  let gameOver = document.getElementById("gameOver");
+  gameOver.style.display = 'none';
 }

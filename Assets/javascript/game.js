@@ -30,13 +30,14 @@ let game = {
 
   },
 
-  checkMath: function () {
+  checkMatch: function () {
     console.log(this.firstCard)
     console.log(this.secondCard)
 
     if (!this.firstCard || !this.secondCard) {
-      return this.firstCard.icon === this.secondCard.icon;
+      return false;
     }
+    return this.firstCard.icon === this.secondCard.icon;
   },
 
   clearCards: function () {
@@ -48,6 +49,9 @@ let game = {
     this.secondCard.flipped = false;
     this.firstCard.flipped = false;
     this.clearCards();
+  },
+  gameOver: function () {
+    return this.cards.filter(cards => !cards.flipped).length == 0
   },
 
   techs: [
