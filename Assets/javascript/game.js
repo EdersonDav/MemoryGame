@@ -13,23 +13,41 @@ let game = {
 
     if (!this.firstCard) {
       this.firstCard = cardFlipped;
+      this.firstCard.flipped = true;
       return true;
     } else {
       this.secondCard = cardFlipped;
+      this.secondCard.flipped = true;
       this.lockMode = true;
-      return true;
+      if (this.firstCard.id != this.secondCard.id) {
+
+        return true;
+      } else {
+        alert("do not select the same card twice")
+        window.location.reload()
+      }
     }
 
   },
 
   checkMath: function () {
-    return this.firstCard.icon === this.secondCard.icon;
+    console.log(this.firstCard)
+    console.log(this.secondCard)
+
+    if (!this.firstCard || !this.secondCard) {
+      return this.firstCard.icon === this.secondCard.icon;
+    }
   },
 
   clearCards: function () {
     this.firstCard = null;
     this.secondCard = null;
     this.lockMode = false;
+  },
+  unflipCards: function () {
+    this.secondCard.flipped = false;
+    this.firstCard.flipped = false;
+    this.clearCards();
   },
 
   techs: [

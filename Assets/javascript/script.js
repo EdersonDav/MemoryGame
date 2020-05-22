@@ -50,7 +50,7 @@ function flipCard() {
 
     this.classList.add("flip");
 
-    if (game.firstCard != null && game.secondCard != null) {
+    if (game.secondCard) {
       if (game.checkMath()) {
 
         game.clearCards();
@@ -62,12 +62,9 @@ function flipCard() {
           let secondtCardView = document.getElementById(game.secondCard.id);
           firstCardView.classList.remove('flip');
           secondtCardView.classList.remove('flip');
-          game.clearCards();
+          game.unflipCards();
 
         }, 1000);
-
-
-
       }
     }
 
