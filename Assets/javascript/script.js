@@ -44,6 +44,8 @@ function createCardFace(face, card, cardElement) {
 
 function flipCard() {
 
+
+
   if (game.setCard(this.id)) {
 
     this.classList.add("flip");
@@ -55,17 +57,20 @@ function flipCard() {
 
       } else {
 
-        setTimeout(function removFlip(card) {
+        setTimeout(() => {
           let firstCardView = document.getElementById(game.firstCard.id);
           let secondtCardView = document.getElementById(game.secondCard.id);
           firstCardView.classList.remove('flip');
           secondtCardView.classList.remove('flip');
-
           game.clearCards();
+
         }, 1000);
+
+
 
       }
     }
 
   }
+
 }
